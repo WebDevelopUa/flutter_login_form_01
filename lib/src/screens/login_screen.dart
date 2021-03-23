@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,8 +14,9 @@ class LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             emailField(),
-            // passwordField(),
-            // submitButton(),
+            passwordField(),
+            Container(margin: EdgeInsets.only(top: 25.0)),
+            submitButton(),
           ],
         ),
       ),
@@ -24,6 +26,7 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget emailField() {
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email',
         hintText: 'name@domain.com',
@@ -31,7 +34,26 @@ class LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget passwordField() {}
+  Widget passwordField() {
+    return TextFormField(
+      obscureText: true,
+      decoration: InputDecoration(
+        labelText: 'Password',
+        hintText: '********',
+      ),
+    );
+  }
 
-  Widget submitButton() {}
+  Widget submitButton() {
+    return ElevatedButton(
+      onPressed: () {
+        print('press');
+      },
+      child: Text('Submit'),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.cyan),
+        padding: MaterialStateProperty.all(EdgeInsets.all(25.0)),
+      ),
+    );
+  }
 }
